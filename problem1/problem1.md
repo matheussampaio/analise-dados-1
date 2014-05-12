@@ -17,7 +17,8 @@ Alguns objetivos deste exercício problema:
 * Praticar comandos mais avançados que permitam trabalhar com dados em formato de tabelas (data frames), agrupar dados por um atributo específico e sumarizar resultados com base em um atributo específico.
 
 Antes de começar precisa entender um pouco de R:
-1. Instale R em sua máquina
+
+1. Instale R em sua máquina;
 2. Leia dicas básicas [aqui](https://www.google.com/url?q=https%3A%2F%2Fsites.google.com%2Fa%2Fcomputacao.ufcg.edu.br%2Fanalise-de-dados-1%2Fproblema%2Fr-tutor0.pdf%3Fattredirects%3D0%26d%3D1&sa=D&sntz=1&usg=AFQjCNFkV99mrTNSn_leSOShz3Zy-HyLMQ).
 
 **Dados: salários de profissionais de TI**
