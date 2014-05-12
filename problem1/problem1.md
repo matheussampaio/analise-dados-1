@@ -18,8 +18,8 @@ Alguns objetivos deste exercício problema:
 
 Antes de começar precisa entender um pouco de R:
 
-1. Instale R em sua máquina;
-2. Leia dicas básicas [aqui](https://www.google.com/url?q=https%3A%2F%2Fsites.google.com%2Fa%2Fcomputacao.ufcg.edu.br%2Fanalise-de-dados-1%2Fproblema%2Fr-tutor0.pdf%3Fattredirects%3D0%26d%3D1&sa=D&sntz=1&usg=AFQjCNFkV99mrTNSn_leSOShz3Zy-HyLMQ).
+1.  Instale R em sua máquina;
+2.  Leia dicas básicas [aqui](https://www.google.com/url?q=https%3A%2F%2Fsites.google.com%2Fa%2Fcomputacao.ufcg.edu.br%2Fanalise-de-dados-1%2Fproblema%2Fr-tutor0.pdf%3Fattredirects%3D0%26d%3D1&sa=D&sntz=1&usg=AFQjCNFkV99mrTNSn_leSOShz3Zy-HyLMQ).
 
 **Dados: salários de profissionais de TI**
 
@@ -27,19 +27,16 @@ Estamos tentando entender um pouco a distribuição dos salários pagos a profis
 
 Use essas informações para gerar um relatório de análise que responde as seguintes questões:
 
-1. Qual o panorama geral dos profissionais de TI no Brasil sem ainda se preocupar com seus salários, apenas com sua localização, função, expertise...?
+1.  Qual o panorama geral dos profissionais de TI no Brasil sem ainda se preocupar com seus salários, apenas com sua localização, função, expertise...?
+  -  *Dica 1: Quando temos um conjunto de dados para analisar é muito importante ter ciência de todos os campos de informação que temos disponíveis. Com o comando head, por exemplo, você consegue ter uma visão geral do cabeçalho do seu conjunto de dados e dos tipos de dados que estão envolvidos. Ao ter conhecimento do seu conjunto de dados e de que tipo de informação cada campo traz, fica mais fácil ter boas ideias para analisar.*
+  -  *Faça o exercício de fazer perguntas aos dados!*
+  -  *O comando table pode ajudar nessa tarefa.*
 
-  - *Dica 1: Quando temos um conjunto de dados para analisar é muito importante ter ciência de todos os campos de informação que temos disponíveis. Com o comando head, por exemplo, você consegue ter uma visão geral do cabeçalho do seu conjunto de dados e dos tipos de dados que estão envolvidos. Ao ter conhecimento do seu conjunto de dados e de que tipo de informação cada campo traz, fica mais fácil ter boas ideias para analisar.*
-  - *Faça o exercício de fazer perguntas aos dados!*
-  - *O comando table pode ajudar nessa tarefa.*
+2.  Os salários estão bem distribuídos no intervalo que vai do menor salário para o maior salário? Ou será que os salários são muito concentrados em um intervalo pequeno de valores? Será que existem salários atípicos (outliers)?
+  -  *Dica 1: summary e boxplot.*
 
+3.  É interessante ver a média (mean) salarial para cada região. Como resultado, apresente uma tabela com o nome da região e a sua média salarial ordenada da região com a maior média salarial para a menor. Se você tivesse usado a mediana (median) em vez da média como métrica de interesse, o resultado seria o mesmo? Analise a situação e justifique. Aproveite e salve esta tabela em um arquivo do tipo csv.
+  -  *Dica: use tapply, write.csv e sort.*
 
-
-2. Os salários estão bem distribuídos no intervalo que vai do menor salário para o maior salário? Ou será que os salários são muito concentrados em um intervalo pequeno de valores? Será que existem salários atípicos (outliers)?
-  - *Dica 1: summary e boxplot.*
-
-3. É interessante ver a média (mean) salarial para cada região. Como resultado, apresente uma tabela com o nome da região e a sua média salarial ordenada da região com a maior média salarial para a menor. Se você tivesse usado a mediana (median) em vez da média como métrica de interesse, o resultado seria o mesmo? Analise a situação e justifique. Aproveite e salve esta tabela em um arquivo do tipo csv.
-  - *Dica: use tapply, write.csv e sort.*
-
-4. Se um profissional de TI deseja ter um salario melhor, qual a dica para ele?
-  - *Dica: Use sua criatividade para brincar com os dados e descobrir informações relevantes/interessantes.*
+4.  Se um profissional de TI deseja ter um salario melhor, qual a dica para ele?
+  -  *Dica: Use sua criatividade para brincar com os dados e descobrir informações relevantes/interessantes.*
