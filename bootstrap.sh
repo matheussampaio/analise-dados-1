@@ -3,4 +3,4 @@
 apt-get update
 
 # Instalando Dependencias:
-apt-get install -y g++ curl libssl-dev apache2-utils unzip make gcc make build-essential
+apt-get install -y g++ curl libssl-dev apache2-utils unzip make gcc make build-essential r-base
