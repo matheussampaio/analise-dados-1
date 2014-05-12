@@ -1,7 +1,5 @@
 # Analise de Dados 1
 
-===============
-
 ## Descrição
 
 Este repositório será usado para resolver os problemas propostos pela disciplina Análise de Dados 1 do curso de Ciência da Computação - UFCG.
