@@ -1,2 +1,0 @@
-df = read.csv("/vagrant/problem1/salarios-ti-regioes.csv", header = TRUE, sep = ",", quote = "\"", dec = ".", fill = TRUE, comment.char = "")
-df
