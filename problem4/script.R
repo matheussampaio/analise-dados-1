@@ -50,7 +50,6 @@ t.test(dados.pb.gzt$velocidade, alternative="less", mu = 50)
 # Verificar se a media de velocidade da Ola ?? maior que 50Mbps
 t.test(dados.pb.ola$velocidade, alternative="less", mu = 50)
 
-
 # RIO DE JANEIRO
 
 dados.rj.gzt <- dados[dados$estado=="RJ",]
@@ -75,8 +74,6 @@ qqnorm(dados.sp.gzt$velocidade, main="Normal Q-Q Plot Sao Paulo"); qqline(dados.
 
 shapiro.test(dados.sp.gzt$velocidade)
 
-provedores = data.frame(dados.pb.gzt$velocidade, dados.rj.gzt$velocidade, dados.sp.gzt$velocidade)
+provedores = stack(data.frame(dados.pb.gzt$velocidade, dados.rj.gzt$velocidade, dados.sp.gzt$velocidade))
 
-#teste ANOVA
-oneway.test(values ~ ind, data=stack(stack(provedores)), var.equal=T)
-print(sprintf("Valor de F: %f", qf(.95, 2, 27)))
+pairwise.t.test(provedores$values, provedores$ind)
