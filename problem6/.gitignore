@@ -1,0 +1,8 @@
+*.class
+
+# generated files
+bin/
+gen/
+
+*build.xml
+*local.properties
