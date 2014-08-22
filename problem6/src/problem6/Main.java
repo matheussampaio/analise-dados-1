@@ -1,27 +1,49 @@
 
 package problem6;
 
+import core.G1;
+import utils.CalculateTime;
+import utils.UtilsProblem;
+
+import java.util.LinkedList;
+
 public class Main {
+    static int countThreads = 0;
 
-    //    Lab06_MineracaoDeTexto() {
-    //        empresas = realizarLeituraDeDadosDasEmpresas();
-    //        // irei trabalhar com nome da empresa? como nome do pregão? com ambas?
-    //        // precisarei de um nome mais legível para empresa?
-    //        // essa será a primeira decisão da análise de dados que você deverá
-    //        // tomar...
-    //        for (final Empresa e : empresas) {
-    //            // Onde na Web? google.com? news.google? reuters? infomoney? Por
-    //            // que?
-    //            páginas = consultarWeb(e);
-    //            for (final Pagina p : paginas) {
-    //                // guardar título, subtítulo(quanto houver) e texto principal.
-    //                tratarHTML(p);
-    //            }
-    //        }
-    //        // Como relacionar as empresas por meio dos textos das notícias? TF-IDF?
-    //        // weka? alguma outra sugestão?
-    //        grupos = minerarTexto();
-    //        return grupos;
-    //    }
+    public static void finishG1(final long time, final LinkedList<String> news) {
+        System.out.println(time);
+        countThreads--;
+        System.out.println(countThreads);
+    }
 
+    public static void main(final String[] args) {
+
+        final LinkedList<String> listEmpresas = UtilsProblem.readEmpresas();
+
+        final CalculateTime time = new CalculateTime();
+
+        final long total = 0;
+
+        time.startTime();
+
+        for (final String empresa : listEmpresas) {
+
+            countThreads++;
+
+            new Thread(new G1(empresa) {
+
+                @Override
+                public void finishListener(final long time, final LinkedList<String> news) {
+                    finishG1(time, news);
+                }
+            }).start();
+        }
+
+        while (countThreads > 0) {
+            System.out.println(countThreads);
+        }
+
+        System.err.println("Total: " + time.stopTime());
+
+    }
 }
