@@ -11,10 +11,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import utils.CalculateTime;
 import utils.WriteNews;
-
-import java.io.IOException;
-import java.net.SocketTimeoutException;
 
 public class G1 extends Thread {
 
@@ -27,6 +25,8 @@ public class G1 extends Thread {
     private final String mEmpresa;
 
     private final WriteNews mWriteNews;
+
+    private int totalNews;
 
     public G1(final String empresa) {
         Preconditions.checkArgument(!Strings.isNullOrEmpty(empresa));
@@ -55,10 +55,7 @@ public class G1 extends Thread {
 
                 return news;
 
-            } catch (final SocketTimeoutException e) {
-                System.err.println("error: " + e.getCause() + "  " + url);
             } catch (final Exception e) {
-                System.err.println("error: " + e.getCause() + "  " + url);
             }
         }
 
@@ -83,20 +80,26 @@ public class G1 extends Thread {
 
                     if (news != null) {
                         mWriteNews.writeNews(news);
+                        totalNews++;
                     }
                 }
             }
-
-        } catch (final IOException e) {
-            e.printStackTrace();
         } catch (final Exception e) {
-            e.printStackTrace();
+            //            e.printStackTrace();
         }
     }
 
     @Override
     public void run() {
+
+        final CalculateTime cTime = new CalculateTime();
+
+        cTime.startTime();
+
         getNews();
+
+        System.out.println("Finished (" + cTime.stopTime() + " seconds) : " + totalNews
+                + " news from " + mEmpresa);
     }
 
 }
