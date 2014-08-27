@@ -23,8 +23,7 @@ public class WriteNews {
 
     public void writeNews(final News news) {
 
-        final String fileName = FOLDER_NAME + "/" + mEmpresa + "/" + news.getUrl().hashCode()
-                + ".txt";
+        final String fileName = FOLDER_NAME + "/" + news.getUrl() + ".txt";
 
         try {
             newsFile = new PrintWriter(new BufferedWriter(new FileWriter(fileName, false)));
@@ -42,7 +41,7 @@ public class WriteNews {
     }
 
     private boolean createFolder() {
-        return new File(FOLDER_NAME, mEmpresa).mkdirs();
+        return new File(FOLDER_NAME).mkdirs();
     }
 
 }

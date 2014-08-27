@@ -27,18 +27,18 @@ public class G1 extends Thread {
     private final WriteNews mWriteNews;
 
     private int totalNews;
+    private final News mNews;
 
     public G1(final String empresa) {
         Preconditions.checkArgument(!Strings.isNullOrEmpty(empresa));
 
         mEmpresa = empresa.toLowerCase();
         mWriteNews = new WriteNews(mEmpresa);
+        mNews = new News(mEmpresa);
     }
 
-    public News getArtigoContent(final String url) {
+    public void getArtigoContent(final String url) {
         Preconditions.checkArgument(!Strings.isNullOrEmpty(url));
-
-        final News news = new News(url);
 
         if (!Strings.isNullOrEmpty(url)) {
 
@@ -50,16 +50,15 @@ public class G1 extends Thread {
                 final Elements content = doc.getElementsByTag("p");
 
                 for (final Element e : content) {
-                    news.add(e.text().toString());
+                    mNews.add(e.text().toString());
                 }
 
-                return news;
+                totalNews++;
 
             } catch (final Exception e) {
             }
         }
 
-        return null;
     }
 
     public void getNews() {
@@ -76,16 +75,11 @@ public class G1 extends Thread {
                 for (final Element n : elements) {
                     final String url = n.getElementsByTag("a").get(0).attr("href").toString();
 
-                    final News news = getArtigoContent(url);
+                    getArtigoContent(url);
 
-                    if (news != null) {
-                        mWriteNews.writeNews(news);
-                        totalNews++;
-                    }
                 }
             }
         } catch (final Exception e) {
-            //            e.printStackTrace();
         }
     }
 
@@ -98,8 +92,15 @@ public class G1 extends Thread {
 
         getNews();
 
-        System.out.println("Finished (" + cTime.stopTime() + " seconds) : " + totalNews
-                + " news from " + mEmpresa);
+        if (Strings.isNullOrEmpty(mNews.getText())) {
+            System.out.println("Finished (" + cTime.stopTime() + " seconds) : EMPTY " + mEmpresa
+                    + " Skiping write file...");
+        } else {
+            mWriteNews.writeNews(mNews);
+
+            System.out.println("Finished (" + cTime.stopTime() + " seconds) : " + totalNews
+                    + " news from " + mEmpresa + " " + mNews.getText().length() + " length");
+        }
     }
 
 }
