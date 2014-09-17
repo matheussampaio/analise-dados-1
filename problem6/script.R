@@ -9,13 +9,9 @@ library("SnowballC")
 library("ggplot2")
 library("wordcloud")
 
-folder_path <- "/home/matheussampaio/git/analise-dados-1/problem6/news/petrobras/"
-
-txt <- system.file(folder_path, "txt")
-
-term_matrix = function (emp) {
+term_matrix = function () {
   
-  folder_path <- paste("/home/matheussampaio/git/analise-dados-1/problem6/news", emp, sep = "/" );
+  folder_path <- "/home/matheussampaio/git/analise-dados-1/problem6/news";
   
   a <- VCorpus(DirSource(folder_path, encoding = "UTF-8"), readerControl = list(language = "pt"));
   
@@ -34,7 +30,7 @@ term_matrix = function (emp) {
   return(adtm);
 }
 
-(ovid <- term_matrix("petrobras"))
+(ovid <- term_matrix())
 
 # inspect(ovid[5:10, 0:100])
 ovid.matrix <- as.matrix(ovid)
